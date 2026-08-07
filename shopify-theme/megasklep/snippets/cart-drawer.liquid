@@ -1,0 +1,34 @@
+<div id="ms-cart-drawer" class="ms-cart-drawer" aria-hidden="true" role="dialog" aria-label="Koszyk">
+  <div class="ms-cart-drawer__header">
+    <div class="ms-cart-drawer__title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span>Koszyk</span>
+      <span class="ms-cart-drawer__item-count" id="ms-drawer-count"></span>
+    </div>
+    <button class="ms-icon-btn" id="ms-cart-close" aria-label="Zamknij koszyk">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <div class="ms-cart-drawer__body" id="ms-cart-drawer-body">
+    <!-- Populated by JS -->
+    <div class="ms-cart-drawer__loading">
+      <svg class="ms-spinner" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+    </div>
+  </div>
+
+  <div class="ms-cart-drawer__footer" id="ms-cart-drawer-footer" style="display:none;">
+    <div class="ms-cart-drawer__shipping-notice" id="ms-shipping-notice"></div>
+    <div class="ms-cart-drawer__total-row">
+      <span>Razem:</span>
+      <span class="ms-cart-drawer__total" id="ms-drawer-total"></span>
+    </div>
+    <a href="{{ routes.checkout }}" class="ms-btn ms-btn--primary ms-btn--large ms-btn--full">
+      Przejdź do kasy
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <button class="ms-btn ms-btn--outline ms-btn--large ms-btn--full" id="ms-continue-shopping" style="margin-top:0.5rem;">
+      Kontynuuj zakupy
+    </button>
+  </div>
+</div>

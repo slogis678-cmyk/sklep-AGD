@@ -1,0 +1,70 @@
+{
+  "general": {
+    "search": {
+      "placeholder": "Szukaj produktów...",
+      "results": "Wyniki wyszukiwania",
+      "no_results": "Brak wyników dla \"{{ terms }}\""
+    },
+    "pagination": {
+      "previous": "Poprzednia",
+      "next": "Następna"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Dodaj do koszyka",
+      "sold_out": "Niedostępny",
+      "unavailable": "Niedostępny",
+      "on_sale": "Promocja",
+      "quantity": "Ilość",
+      "vendor": "Marka",
+      "description": "Opis produktu"
+    },
+    "facets": {
+      "filter_by": "Filtruj według",
+      "clear_all": "Wyczyść filtry",
+      "from": "Od",
+      "to": "Do",
+      "sort_by_label": "Sortuj:",
+      "sort_by": {
+        "manual": "Polecane",
+        "best_selling": "Bestsellery",
+        "title_ascending": "Nazwa: A–Z",
+        "title_descending": "Nazwa: Z–A",
+        "price_ascending": "Cena: od najniższej",
+        "price_descending": "Cena: od najwyższej",
+        "created_ascending": "Najstarsze",
+        "created_descending": "Nowości"
+      }
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Koszyk",
+      "subtotal": "Wartość produktów",
+      "total": "Łącznie",
+      "remove": "Usuń",
+      "checkout": "Przejdź do kasy",
+      "continue_shopping": "Kontynuuj zakupy",
+      "empty": "Twój koszyk jest pusty",
+      "shipping": "Dostawa",
+      "free_shipping": "Darmowa",
+      "note": "Notatka do zamówienia",
+      "quantity": "Ilość"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Przejdź do treści",
+    "close": "Zamknij",
+    "open_cart": "Otwórz koszyk",
+    "open_menu": "Otwórz menu",
+    "close_menu": "Zamknij menu",
+    "search": "Szukaj"
+  },
+  "newsletter": {
+    "label": "Adres e-mail",
+    "placeholder": "Twój adres e-mail",
+    "submit": "Zapisz się",
+    "success": "Dziękujemy za zapis!"
+  }
+}

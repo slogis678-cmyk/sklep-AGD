@@ -1,0 +1,16 @@
+{
+  "current": {
+    "color_primary": "#2563eb",
+    "color_primary_hover": "#1d4ed8",
+    "color_text": "#111827",
+    "color_text_muted": "#6b7280",
+    "color_bg": "#f9fafb",
+    "color_accent": "#dc2626",
+    "font_size_base": 15,
+    "page_width": 1280,
+    "grid_gap": 20,
+    "cart_type": "drawer",
+    "free_shipping_threshold": 29900,
+    "show_add_to_cart_notification": true
+  }
+}

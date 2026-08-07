@@ -1,0 +1,129 @@
+<footer class="ms-footer">
+  <div class="ms-container">
+    <!-- Brand + Links grid -->
+    <div class="ms-footer__grid">
+
+      <!-- Brand column -->
+      <div class="ms-footer__brand">
+        <a href="{{ routes.root_url }}" class="ms-header__logo ms-footer__logo" aria-label="{{ shop.name }}">
+          {% if section.settings.logo != blank %}
+            <img src="{{ section.settings.logo | image_url: width: 160 }}" alt="{{ shop.name }}" width="160" height="40" loading="lazy">
+          {% else %}
+            <div class="ms-logo-icon">M</div>
+            <div class="ms-logo-text">
+              <span class="ms-logo-name">{{ shop.name }}</span>
+              <span class="ms-logo-tagline">AGD &middot; Elektronika &middot; Meble</span>
+            </div>
+          {% endif %}
+        </a>
+        <p class="ms-footer__desc">{{ section.settings.description }}</p>
+        <div class="ms-footer__contact">
+          {% if section.settings.phone != blank %}
+            <div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12.5 19.79 19.79 0 0 1 1.57 4a2 2 0 0 1 1.95-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.27a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              {{ section.settings.phone }}
+            </div>
+          {% endif %}
+          {% if section.settings.email != blank %}
+            <div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              {{ section.settings.email }}
+            </div>
+          {% endif %}
+          {% if section.settings.address != blank %}
+            <div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {{ section.settings.address }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="ms-footer__social">
+          {% if section.settings.facebook != blank %}
+            <a href="{{ section.settings.facebook }}" class="ms-social-btn" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          {% endif %}
+          {% if section.settings.instagram != blank %}
+            <a href="{{ section.settings.instagram }}" class="ms-social-btn" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          {% endif %}
+          {% if section.settings.youtube != blank %}
+            <a href="{{ section.settings.youtube }}" class="ms-social-btn" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Link columns -->
+      {% for block in section.blocks %}
+        {% if block.type == 'link_list' %}
+          <div class="ms-footer__links" {{ block.shopify_attributes }}>
+            <h4 class="ms-footer__links-title">{{ block.settings.heading }}</h4>
+            <ul>
+              {% for link in linklists[block.settings.menu].links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="ms-footer__bottom">
+      <p class="ms-footer__copy">{{ section.settings.copyright | replace: '[year]', 'now' | date: '%Y' }}</p>
+      <div class="ms-footer__legal">
+        <a href="/pages/polityka-prywatnosci">Polityka prywatności</a>
+        <a href="/pages/regulamin">Regulamin</a>
+        <a href="/pages/cookies">Cookies</a>
+      </div>
+      <div class="ms-footer__payments">
+        <span>Przyjmujemy:</span>
+        <span class="ms-payment-badge">VISA</span>
+        <span class="ms-payment-badge">MC</span>
+        <span class="ms-payment-badge">BLIK</span>
+        <span class="ms-payment-badge">P24</span>
+        <span class="ms-payment-badge">PayPal</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Stopka",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "textarea", "id": "description", "label": "Opis sklepu", "default": "Twój zaufany sklep internetowy z AGD, elektroniką i meblami. Ponad 4500 produktów, darmowa dostawa od 299 zł i zwrot w ciągu 30 dni." },
+    { "type": "text", "id": "phone", "label": "Telefon", "default": "800 123 456 (bezpłatna)" },
+    { "type": "text", "id": "email", "label": "E-mail", "default": "kontakt@sklep.pl" },
+    { "type": "text", "id": "address", "label": "Adres", "default": "ul. Handlowa 15, 00-001 Warszawa" },
+    { "type": "url", "id": "facebook", "label": "Facebook URL" },
+    { "type": "url", "id": "instagram", "label": "Instagram URL" },
+    { "type": "url", "id": "youtube", "label": "YouTube URL" },
+    { "type": "text", "id": "copyright", "label": "Tekst praw autorskich", "default": "© [year] MegaSklep Sp. z o.o. Wszelkie prawa zastrzeżone." }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Kolumna linków",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Nagłówek kolumny", "default": "Sklep" },
+        { "type": "link_list", "id": "menu", "label": "Menu" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stopka",
+      "blocks": [
+        { "type": "link_list", "settings": { "heading": "Sklep" } },
+        { "type": "link_list", "settings": { "heading": "Pomoc" } },
+        { "type": "link_list", "settings": { "heading": "Firma" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

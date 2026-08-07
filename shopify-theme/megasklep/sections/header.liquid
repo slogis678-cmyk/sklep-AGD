@@ -1,0 +1,133 @@
+<header class="ms-header" id="ms-header" data-sticky="{{ section.settings.sticky_header }}">
+  <div class="ms-container">
+    <div class="ms-header__inner">
+
+      <!-- Logo -->
+      <a href="{{ routes.root_url }}" class="ms-header__logo" aria-label="{{ shop.name }}">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 180 }}" alt="{{ shop.name }}" width="180" height="40" loading="eager">
+        {% else %}
+          <div class="ms-logo-icon">M</div>
+          <div class="ms-logo-text">
+            <span class="ms-logo-name">{{ shop.name }}</span>
+            <span class="ms-logo-tagline">AGD &middot; Elektronika &middot; Meble</span>
+          </div>
+        {% endif %}
+      </a>
+
+      <!-- Search -->
+      <form action="{{ routes.search_url }}" method="get" class="ms-header__search" role="search">
+        <input type="hidden" name="type" value="product">
+        <div class="ms-search-wrap">
+          <input
+            type="search"
+            name="q"
+            placeholder="{{ section.settings.search_placeholder }}"
+            class="ms-search-input"
+            aria-label="Szukaj produktów"
+            {% if search.performed %}value="{{ search.terms | escape }}"{% endif %}
+          >
+          <button type="submit" class="ms-search-btn" aria-label="Szukaj">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- Actions -->
+      <div class="ms-header__actions">
+        <a href="{{ routes.search_url }}" class="ms-icon-btn ms-header__search-mobile" aria-label="Szukaj">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </a>
+        <a href="{{ routes.root_url }}pages/wishlist" class="ms-icon-btn ms-header__wishlist" aria-label="Lista życzeń">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </a>
+        <button class="ms-icon-btn ms-cart-trigger" aria-label="Koszyk" data-cart-trigger>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="ms-cart-count" id="ms-cart-count" {% if cart.item_count == 0 %}style="display:none"{% endif %}>{{ cart.item_count }}</span>
+        </button>
+        <a href="{{ routes.account_url }}" class="ms-icon-btn ms-header__account" aria-label="Konto">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <button class="ms-icon-btn ms-hamburger" aria-label="Menu" data-menu-toggle>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="ms-header__nav" id="ms-nav" aria-label="Główna nawigacja">
+    <div class="ms-container">
+      <div class="ms-nav__inner">
+        <ul class="ms-nav__list">
+          {% for link in linklists[section.settings.menu].links %}
+            <li class="ms-nav__item{% if link.active %} is-active{% endif %}{% if link.links != blank %} has-dropdown{% endif %}">
+              <a href="{{ link.url }}" class="ms-nav__link">
+                {{ link.title }}
+                {% if link.links != blank %}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                {% endif %}
+              </a>
+              {% if link.links != blank %}
+                <ul class="ms-nav__dropdown">
+                  {% for child in link.links %}
+                    <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="ms-nav__extras">
+          <a href="/collections/sale" class="ms-nav__promo">🔥 Promocje</a>
+          <a href="/pages/raty">Raty 0%</a>
+          <a href="/collections/outlet">Outlet</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="ms-mobile-menu" id="ms-mobile-menu" aria-hidden="true">
+    <div class="ms-mobile-menu__header">
+      <span>Menu</span>
+      <button class="ms-icon-btn" data-menu-close aria-label="Zamknij menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="ms-mobile-menu__search">
+      <form action="{{ routes.search_url }}" method="get">
+        <input type="hidden" name="type" value="product">
+        <div class="ms-search-wrap">
+          <input type="search" name="q" placeholder="{{ section.settings.search_placeholder }}" class="ms-search-input">
+          <button type="submit" class="ms-search-btn" aria-label="Szukaj">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+    <ul class="ms-mobile-menu__list">
+      {% for link in linklists[section.settings.menu].links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {% endfor %}
+      <li><a href="/collections/sale" class="ms-mobile-promo">🔥 Promocje</a></li>
+      <li><a href="/pages/raty">Raty 0%</a></li>
+      <li><a href="/collections/outlet">Outlet</a></li>
+    </ul>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Nagłówek",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "range", "id": "logo_width", "min": 80, "max": 300, "step": 10, "unit": "px", "label": "Szerokość logo", "default": 160 },
+    { "type": "link_list", "id": "menu", "label": "Menu główne", "default": "main-menu" },
+    { "type": "text", "id": "search_placeholder", "label": "Placeholder wyszukiwarki", "default": "Szukaj produktów, marek, kategorii..." },
+    { "type": "checkbox", "id": "sticky_header", "label": "Przyklejony nagłówek", "default": true }
+  ]
+}
+{% endschema %}

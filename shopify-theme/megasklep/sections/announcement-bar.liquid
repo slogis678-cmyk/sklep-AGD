@@ -1,0 +1,33 @@
+<div class="ms-announcement-bar">
+  <div class="ms-container ms-announcement-bar__inner">
+    <div class="ms-announcement-bar__left">
+      <span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12.5 19.79 19.79 0 0 1 1.57 4a2 2 0 0 1 1.95-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.27a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        {{ section.settings.phone }}
+      </span>
+      <span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        {{ section.settings.stores_text }}
+      </span>
+    </div>
+    <div class="ms-announcement-bar__right">
+      <span>{{ section.settings.free_delivery }}</span>
+      <span>{{ section.settings.returns }}</span>
+      <span>{{ section.settings.installments }}</span>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pasek ogłoszeń",
+  "settings": [
+    { "type": "text", "id": "phone", "label": "Telefon", "default": "800 123 456 (bezpłatna)" },
+    { "type": "text", "id": "stores_text", "label": "Sklepy", "default": "Salony w całej Polsce" },
+    { "type": "text", "id": "free_delivery", "label": "Darmowa dostawa", "default": "Darmowa dostawa od 299 zł" },
+    { "type": "text", "id": "returns", "label": "Zwroty", "default": "Zwrot 30 dni" },
+    { "type": "text", "id": "installments", "label": "Raty", "default": "Raty 0%" }
+  ],
+  "presets": [{ "name": "Pasek ogłoszeń" }]
+}
+{% endschema %}

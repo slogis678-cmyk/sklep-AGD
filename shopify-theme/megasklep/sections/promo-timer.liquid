@@ -1,0 +1,57 @@
+<section class="ms-promo-timer">
+  <div class="ms-container">
+    <div class="ms-promo-timer__inner">
+      <div class="ms-promo-timer__left">
+        <div class="ms-promo-timer__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <p class="ms-promo-timer__label">{{ section.settings.label }}</p>
+          <h3 class="ms-promo-timer__heading">{{ section.settings.heading }}</h3>
+        </div>
+      </div>
+
+      <div class="ms-countdown" data-end="{{ section.settings.end_time }}" id="ms-countdown">
+        <div class="ms-countdown__block">
+          <span class="ms-countdown__num" id="ms-cd-hours">{{ section.settings.hours | prepend: '0' | slice: -2, 2 }}</span>
+          <span class="ms-countdown__unit">godzin</span>
+        </div>
+        <span class="ms-countdown__sep">:</span>
+        <div class="ms-countdown__block">
+          <span class="ms-countdown__num" id="ms-cd-minutes">{{ section.settings.minutes | prepend: '0' | slice: -2, 2 }}</span>
+          <span class="ms-countdown__unit">minut</span>
+        </div>
+        <span class="ms-countdown__sep">:</span>
+        <div class="ms-countdown__block">
+          <span class="ms-countdown__num" id="ms-cd-seconds">{{ section.settings.seconds | prepend: '0' | slice: -2, 2 }}</span>
+          <span class="ms-countdown__unit">sekund</span>
+        </div>
+      </div>
+
+      <div class="ms-promo-timer__right">
+        <p class="ms-promo-timer__save">Oszczędź do <strong>{{ section.settings.discount }}</strong></p>
+        <a href="{{ section.settings.button_link }}" class="ms-btn ms-btn--white">
+          {{ section.settings.button_label }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Oferta dnia (licznik)",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Etykieta", "default": "Oferta dnia kończy się za:" },
+    { "type": "text", "id": "heading", "label": "Nagłówek", "default": "Błyskawiczna Promocja" },
+    { "type": "number", "id": "hours", "label": "Godziny startowe", "default": 5 },
+    { "type": "number", "id": "minutes", "label": "Minuty startowe", "default": 42 },
+    { "type": "number", "id": "seconds", "label": "Sekundy startowe", "default": 17 },
+    { "type": "text", "id": "discount", "label": "Maksymalna zniżka", "default": "40%" },
+    { "type": "text", "id": "button_label", "label": "Tekst przycisku", "default": "Sprawdź oferty" },
+    { "type": "url", "id": "button_link", "label": "Link przycisku" }
+  ],
+  "presets": [{ "name": "Oferta dnia (licznik)" }]
+}
+{% endschema %}

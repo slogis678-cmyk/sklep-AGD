@@ -1,0 +1,55 @@
+{% paginate search.results by 24 %}
+
+<div class="ms-search-page ms-section">
+  <div class="ms-container">
+    <h1 class="ms-search-page__title">
+      {% if search.performed %}
+        {% if search.results_count == 0 %}
+          Brak wyników dla „{{ search.terms }}"
+        {% else %}
+          Wyniki wyszukiwania dla „{{ search.terms }}" ({{ search.results_count }})
+        {% endif %}
+      {% else %}
+        Wyszukiwarka
+      {% endif %}
+    </h1>
+
+    <form action="{{ routes.search_url }}" method="get" class="ms-search-page__form">
+      <input type="hidden" name="type" value="product">
+      <div class="ms-search-wrap ms-search-wrap--lg">
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="Szukaj produktów..."
+          class="ms-search-input"
+          autofocus
+        >
+        <button type="submit" class="ms-search-btn" aria-label="Szukaj">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+    </form>
+
+    {% if search.performed %}
+      {% if search.results_count > 0 %}
+        <div class="ms-product-grid" style="margin-top: 2rem;">
+          {% for item in search.results %}
+            {% if item.object_type == 'product' %}
+              {% render 'product-card', product: item %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% if paginate.pages > 1 %}
+          <div class="ms-pagination">{{ paginate | default_pagination }}</div>
+        {% endif %}
+      {% else %}
+        <div class="ms-empty-state" style="margin-top: 3rem;">
+          <p>Spróbuj innego zapytania lub przeglądaj nasze <a href="{{ routes.all_products_collection_url }}">wszystkie produkty</a>.</p>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+
+{% endpaginate %}

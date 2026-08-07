@@ -1,0 +1,105 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "MegaSklep",
+    "theme_version": "1.0.0",
+    "theme_author": "MegaSklep",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Kolory",
+    "settings": [
+      { "type": "color", "id": "color_primary", "label": "Kolor główny", "default": "#2563eb" },
+      { "type": "color", "id": "color_primary_hover", "label": "Kolor główny (hover)", "default": "#1d4ed8" },
+      { "type": "color", "id": "color_text", "label": "Kolor tekstu", "default": "#111827" },
+      { "type": "color", "id": "color_text_muted", "label": "Kolor tekstu (muted)", "default": "#6b7280" },
+      { "type": "color", "id": "color_bg", "label": "Kolor tła", "default": "#f9fafb" },
+      { "type": "color", "id": "color_accent", "label": "Kolor akcentu (promocje)", "default": "#dc2626" }
+    ]
+  },
+  {
+    "name": "Typografia",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Czcionka nagłówków",
+        "default": "sora_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Czcionka treści",
+        "default": "inter_n4"
+      },
+      {
+        "type": "range",
+        "id": "font_size_base",
+        "min": 12,
+        "max": 18,
+        "step": 1,
+        "unit": "px",
+        "label": "Bazowy rozmiar czcionki",
+        "default": 15
+      }
+    ]
+  },
+  {
+    "name": "Koszyk",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Typ koszyka",
+        "options": [
+          { "value": "drawer", "label": "Szuflada boczna" },
+          { "value": "page", "label": "Strona koszyka" }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Próg darmowej dostawy (w groszach, np. 29900 = 299 zł)",
+        "default": 29900
+      }
+    ]
+  },
+  {
+    "name": "Układ",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "min": 1000,
+        "max": 1600,
+        "step": 10,
+        "unit": "px",
+        "label": "Maksymalna szerokość strony",
+        "default": 1280
+      },
+      {
+        "type": "range",
+        "id": "grid_gap",
+        "min": 8,
+        "max": 40,
+        "step": 4,
+        "unit": "px",
+        "label": "Odstęp w siatce produktów",
+        "default": 20
+      }
+    ]
+  },
+  {
+    "name": "Powiadomienia",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_add_to_cart_notification",
+        "label": "Pokazuj powiadomienie po dodaniu do koszyka",
+        "default": true
+      }
+    ]
+  }
+]

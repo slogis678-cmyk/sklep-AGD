@@ -1,0 +1,135 @@
+{% paginate collection.products by section.settings.products_per_page %}
+
+<div class="ms-collection-page ms-section">
+  <div class="ms-container">
+
+    <!-- Breadcrumbs -->
+    <nav class="ms-breadcrumbs" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Strona główna</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ collection.title }}</span>
+    </nav>
+
+    <!-- Header -->
+    <div class="ms-collection-page__header">
+      <div>
+        <h1 class="ms-collection-page__title">{{ collection.title }}</h1>
+        <p class="ms-collection-page__count">{{ collection.products_count }} produktów</p>
+      </div>
+      <!-- Sort -->
+      <div class="ms-sort-wrap">
+        <label for="ms-sort" class="ms-sort-label">Sortuj:</label>
+        <div class="ms-select-wrap">
+          <select id="ms-sort" class="ms-select" onchange="window.location.href=this.value">
+            {% for option in collection.sort_options %}
+              <option value="{{ collection.url }}?sort_by={{ option.value }}" {% if collection.sort_by == option.value %}selected{% endif %}>
+                {{ option.name }}
+              </option>
+            {% endfor %}
+          </select>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="ms-collection-layout">
+      <!-- Filters sidebar -->
+      <aside class="ms-filters" id="ms-filters">
+        <div class="ms-filters__header">
+          <h2>Filtry</h2>
+          <button class="ms-filters__close" data-filters-close aria-label="Zamknij filtry">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        {% for filter in collection.filters %}
+          <div class="ms-filter-group">
+            <button class="ms-filter-group__toggle" aria-expanded="true">
+              {{ filter.label }}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="ms-filter-group__body">
+              {% if filter.type == 'price_range' %}
+                <div class="ms-price-filter">
+                  <div class="ms-price-filter__inputs">
+                    <div>
+                      <label>Od</label>
+                      <input type="number" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}" placeholder="0" class="ms-price-input">
+                    </div>
+                    <div>
+                      <label>Do</label>
+                      <input type="number" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}" placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}" class="ms-price-input">
+                    </div>
+                  </div>
+                </div>
+              {% else %}
+                <ul class="ms-filter-list">
+                  {% for value in filter.values %}
+                    <li>
+                      <label class="ms-checkbox-label {% if value.active %}is-active{% endif %}">
+                        <input
+                          type="checkbox"
+                          name="{{ value.param_name }}"
+                          value="{{ value.value }}"
+                          {% if value.active %}checked{% endif %}
+                          class="ms-checkbox"
+                        >
+                        <span>{{ value.label }}</span>
+                        <span class="ms-filter-count">({{ value.count }})</span>
+                      </label>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </aside>
+
+      <!-- Products -->
+      <div class="ms-collection-products">
+        {% if collection.description != blank %}
+          <div class="ms-collection-desc">{{ collection.description }}</div>
+        {% endif %}
+
+        {% if collection.products.size > 0 %}
+          <div class="ms-product-grid">
+            {% for product in collection.products %}
+              {% render 'product-card', product: product %}
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="ms-empty-state">
+            <p>Brak produktów spełniających wybrane kryteria.</p>
+            <a href="{{ collection.url }}" class="ms-btn ms-btn--primary">Wyczyść filtry</a>
+          </div>
+        {% endif %}
+
+        {% if paginate.pages > 1 %}
+          <div class="ms-pagination">
+            {{ paginate | default_pagination | replace: '&laquo; Previous', '← Poprzednia' | replace: 'Next &raquo;', 'Następna →' }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Kolekcja",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "label": "Produktów na stronę",
+      "default": 24
+    }
+  ]
+}
+{% endschema %}

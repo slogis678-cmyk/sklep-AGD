@@ -1,0 +1,151 @@
+{
+  "sections": {
+    "hero-slideshow": {
+      "type": "hero-slideshow",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "badge": "Do -30%",
+            "heading": "Letnia Wyprzedaż AGD",
+            "subheading": "Oszczędź do 30% na sprzętach AGD — ograniczone ilości!",
+            "button_label": "Sprawdź ofertę",
+            "button_link": "/collections/agd",
+            "color_from": "#1e3a8a",
+            "color_to": "#1d4ed8"
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {
+            "badge": "Nowości 2025",
+            "heading": "Nowa Elektronika 2025",
+            "subheading": "Najnowsze laptopy, smartfony i telewizory w świetnych cenach",
+            "button_label": "Zobacz nowości",
+            "button_link": "/collections/elektronika",
+            "color_from": "#0f172a",
+            "color_to": "#1e293b"
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "badge": "Dostawa 48h",
+            "heading": "Urządź Dom z Klasą",
+            "subheading": "Meble skandynawskie z dostawą w 48h — teraz w promocyjnych cenach",
+            "button_label": "Wybierz meble",
+            "button_link": "/collections/meble",
+            "color_from": "#064e3b",
+            "color_to": "#059669"
+          }
+        }
+      },
+      "block_order": ["slide-1", "slide-2", "slide-3"],
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "features-bar": {
+      "type": "features-bar",
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "icon": "truck", "color": "blue", "title": "Darmowa dostawa", "description": "Od 299 zł zamówienia" } },
+        "f2": { "type": "feature", "settings": { "icon": "rotate", "color": "green", "title": "Zwrot 30 dni", "description": "Bez podawania przyczyny" } },
+        "f3": { "type": "feature", "settings": { "icon": "credit-card", "color": "amber", "title": "Raty 0%", "description": "Nawet do 36 rat" } },
+        "f4": { "type": "feature", "settings": { "icon": "shield", "color": "blue", "title": "Oryginalne produkty", "description": "Gwarancja autentyczności" } },
+        "f5": { "type": "feature", "settings": { "icon": "headphones", "color": "amber", "title": "Wsparcie 24/7", "description": "Zawsze do dyspozycji" } },
+        "f6": { "type": "feature", "settings": { "icon": "star", "color": "amber", "title": "Program lojalnościowy", "description": "Zbieraj punkty" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
+      "settings": {}
+    },
+    "collection-categories": {
+      "type": "collection-categories",
+      "blocks": {
+        "cat-1": {
+          "type": "category",
+          "settings": {
+            "title": "AGD",
+            "product_count": "1 240",
+            "link": "/collections/agd",
+            "subcategories": "Pralki, Lodówki, Zmywarki, Piekarniki, Mikrofalówki"
+          }
+        },
+        "cat-2": {
+          "type": "category",
+          "settings": {
+            "title": "Elektronika",
+            "product_count": "2 380",
+            "link": "/collections/elektronika",
+            "subcategories": "Laptopy, Smartfony, Tablety, Telewizory, Słuchawki"
+          }
+        },
+        "cat-3": {
+          "type": "category",
+          "settings": {
+            "title": "Meble",
+            "product_count": "890",
+            "link": "/collections/meble",
+            "subcategories": "Sofy i kanapy, Łóżka, Szafy, Biurka, Komody"
+          }
+        }
+      },
+      "block_order": ["cat-1", "cat-2", "cat-3"],
+      "settings": {
+        "heading": "Kategorie",
+        "subheading": "Przeglądaj naszą ofertę"
+      }
+    },
+    "promo-timer": {
+      "type": "promo-timer",
+      "settings": {
+        "label": "Oferta dnia kończy się za:",
+        "heading": "Błyskawiczna Promocja",
+        "hours": 5,
+        "minutes": 42,
+        "seconds": 17,
+        "discount": "40%",
+        "button_label": "Sprawdź oferty",
+        "button_link": "/collections/sale"
+      }
+    },
+    "featured-products-agd": {
+      "type": "featured-products",
+      "settings": {
+        "heading": "Polecane AGD",
+        "products_per_row": 4,
+        "rows": 1,
+        "view_all_label": "Zobacz wszystkie",
+        "view_all_link": "/collections/agd"
+      }
+    },
+    "featured-products-el": {
+      "type": "featured-products",
+      "settings": {
+        "heading": "Bestsellery Elektroniki",
+        "products_per_row": 4,
+        "rows": 1,
+        "view_all_label": "Zobacz wszystkie",
+        "view_all_link": "/collections/elektronika"
+      }
+    },
+    "newsletter-banner": {
+      "type": "newsletter-banner",
+      "settings": {
+        "heading": "Zapisz się do newslettera",
+        "subheading": "Otrzymuj najnowsze oferty i promocje jako pierwszy.",
+        "placeholder": "Twój adres e-mail",
+        "button": "Zapisz się"
+      }
+    }
+  },
+  "order": [
+    "hero-slideshow",
+    "features-bar",
+    "collection-categories",
+    "promo-timer",
+    "featured-products-agd",
+    "featured-products-el",
+    "newsletter-banner"
+  ]
+}
